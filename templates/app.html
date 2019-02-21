@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>app</title>
+</head>
+<body>
+    <div>
+        <h2>SEARCH bugs reported using country code and device id</h2>
+        <form class="search_tester_by_Country" method="post" action="#">
+            <p>to find all bugs for given device -> leave country empty</p>
+            <p>to find all bugs for given country -> leave device empty</p>
+            <p>to give more then one condition, for example</p>
+            <p> find GB and US -> fill country code as: US,GB (use comma) </pp>
+                <br>
+                <br>
+                <label>COUNTRY CODE:</label><br>
+            <input name="country" type="text" value=""/><br>
+            <label>DEVICE ID:</label><br>
+            <input name="device" type="text" value=""/><br>
+            <button type="submit" name="submit" value="search_tester">SEARCH</button>
+        </form>
+    </div>
+
+
+</body>
+</html>
