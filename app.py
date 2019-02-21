@@ -27,7 +27,11 @@ def post_form():
                 sql = "SELECT * FROM {} WHERE country IN {}".format(table,tuple(list_country))
 
             #print(sql)
-            db.cursor.execute(sql)
+            try:
+                db.cursor.execute(sql)
+            except Exception:
+                return render_template("app.html", err = 'podaj poprawne dane')
+
             results = []
             resultsInfo = []
             for record in db.cursor:
@@ -47,10 +51,20 @@ def devices(user_id, device_id):
     if device_id == "":
         sql = 'SELECT * FROM bugs WHERE testerId = {}'.format(user_id)
     elif len(list_deviceId)>1:
-        #print(list_deviceId)
+        for id in list_deviceId:
+            try:
+                int(id)
+            except ValueError:
+                return " - not able to check - wrong input "
+
         sql = 'SELECT * FROM bugs WHERE testerId = {} AND ' \
           'deviceId IN {}'.format(user_id, tuple(list_deviceId))
     else:
+        try:
+            int(device_id)
+        except ValueError:
+            return " - not able to check - wrong input "
+
         sql = 'SELECT * FROM bugs WHERE testerId = {} AND ' \
           'deviceId = {}'.format(user_id, device_id)
     db = DBconnection()
