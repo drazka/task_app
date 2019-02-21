@@ -5,7 +5,8 @@ Counting reported bugs by tester according to given conditions: by country/ies o
 
 HOW TO USE:
 1. See requirements.txt file, install if needed
-2. Check file: dbconnection.py and fill all needed information to connect to database
+2. Check file: dbconnection.py and fill all needed information to connect to database.
+    If you need create new one: see file.sql
 2. Run app.py
 3. Run web browser (see the address in console)
 4. Fill form

@@ -1,4 +1,4 @@
-
+CREATE DATABASE task_app;
 
 create table bugs
 (bugId int primary key auto_increment,
