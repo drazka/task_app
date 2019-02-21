@@ -24,7 +24,7 @@ def post_form():
                 list_country = country.split(",")
                 #print(list_country)
 
-                sql = "SELECT * FROM {} WHERE country IN{}".format(table,tuple(list_country))
+                sql = "SELECT * FROM {} WHERE country IN {}".format(table,tuple(list_country))
 
             #print(sql)
             db.cursor.execute(sql)
@@ -35,12 +35,9 @@ def post_form():
                 print(text1)
                 text2 = " for device o ID " + device
                 bugs = devices(record[0], device)
-                resultsInfo.append(text1)
-                resultsInfo.append(text2)
-                resultsInfo.append(bugs)
+                resultsInfo.append(text1 + text2 + bugs)
                 results.append(bugs)
-            #print(str(results))
-            return str(resultsInfo)
+            return render_template('app_result.html', result = resultsInfo)
 
 
 def devices(user_id, device_id):
@@ -61,7 +58,7 @@ def devices(user_id, device_id):
     bugs = []
     for record in db.cursor:
         bugs.append(record)
-    text3 = "filled " + str(len(bugs)) + " bugs"
+    text3 = " filled " + str(len(bugs)) + " bugs"
     print(bugs)
     return text3
 
